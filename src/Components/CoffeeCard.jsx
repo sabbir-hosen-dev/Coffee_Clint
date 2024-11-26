@@ -2,11 +2,42 @@
 /* eslint-disable no-unused-vars */
 import { FaPen } from "react-icons/fa";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
-import img from "../assets/images/1.png"; // Replace with your coffee image path
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useCoffeeContex from "../Hooks/useCoffeeContex";
 
-function CoffeeCard({coffee}) {
-  const {_id,name,chef,photo,price} = coffee
+function CoffeeCard({ coffee }) {
+  const { _id, name, chef, photo, price } = coffee;
+
+  const { update, setUpdate } = useCoffeeContex();
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You Delete this Coffee !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/coffee/${id}`, { method: "DELETE" })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              setUpdate(!update);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    });
+  };
   return (
     <div className="flex items-center justify-between gap-4 p-6 rounded-lg bg-[#F9F6F1] shadow-md">
       {/* Image Section */}
@@ -36,10 +67,17 @@ function CoffeeCard({coffee}) {
         <button className="p-2 rounded-full z-10 bg-[#d4b18f] hover:bg-[#c49d76] text-white shadow-md">
           <AiFillEye size={18} />
         </button>
-        <Link state={{coffee : coffee}} to="/update-coffee" className="p-2 rounded-full z-10 bg-[#525252] hover:bg-[#424242] text-white shadow-md">
+        <Link
+          state={{ coffee: coffee }}
+          to="/update-coffee"
+          className="p-2 rounded-full z-10 bg-[#525252] hover:bg-[#424242] text-white shadow-md"
+        >
           <FaPen size={18} />
         </Link>
-        <button className="p-2 rounded-full z-10 bg-[#E63946] hover:bg-[#c52837] text-white shadow-md">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="p-2 rounded-full z-10 bg-[#E63946] hover:bg-[#c52837] text-white shadow-md"
+        >
           <AiFillDelete size={18} />
         </button>
       </div>
