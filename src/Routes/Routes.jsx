@@ -1,32 +1,22 @@
-const { createBrowserRouter } = require("react-router-dom");
-const { default: Home } = require("../Pages/Home");
-const { default: AddCoffe } = require("../Pages/AddCoffe");
-const { default: UpgradeCoffee } = require("../Pages/UpgradeCoffee");
-const { default: MainElement } = require("../Components/MainElement");
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainElement from "./../Components/MainElement";
+import AddCoffe from "./../Pages/AddCoffe";
+import UpgradeCoffee from "./../Pages/UpgradeCoffee";
+import NotFound from "../Pages/NotFount";
 
-const Routes = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainElement />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/add-coffee",
-        element: <AddCoffe />,
-      },
-      {
-        path: "/update-coffee",
-        element: <UpgradeCoffee />,
-      },
-      {
-        path: "/coffee",
-      },
-    ],
-  },
-]);
+function RoutesApp() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainElement />}>
+          <Route path="/add-coffee" element={<AddCoffe />} />
+          <Route path="/edit-coffee" element={<UpgradeCoffee />} />
+        </Route>
 
-// export default
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default RoutesApp;

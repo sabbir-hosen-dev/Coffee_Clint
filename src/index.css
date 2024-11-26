@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rancho&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.wrap{
+  @apply max-w-[1500px] m-auto px-5;
+}
+.nav{
+  background-image: url("/assets/images/more/15.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body{
+  font-family: "Raleway", sans-serif;
+  color:#1B1A1A;
+}
