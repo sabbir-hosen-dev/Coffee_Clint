@@ -10,7 +10,7 @@ const CoffeeContexProvider = ({children}) => {
   const [update,setUpdate] = useState(true)
 
   useEffect(() => {
-    fetch("http://localhost:5000/coffee")
+    fetch("http://localhost:5000/coffees")
     .then(res => res.json())
     .then(data => setCoffees(data))
     .catch(err => console.log(err))

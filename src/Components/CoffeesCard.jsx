@@ -27,8 +27,8 @@ function CoffeeCard({ coffee }) {
           .then((data) => {
             if (data.acknowledged) {
               Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
+                title: "Good Luck!",
+                text: "Deleted coffee detailsAre you sure that you want to delete it?.",
                 icon: "success",
               });
               setUpdate(!update);
@@ -64,9 +64,9 @@ function CoffeeCard({ coffee }) {
 
       {/* Button Section */}
       <div className="flex flex-col items-center gap-3">
-        <button className="p-2 rounded-full z-10 bg-[#d4b18f] hover:bg-[#c49d76] text-white shadow-md">
+        <Link to={`/coffees/${_id}`} className="p-2 rounded-full z-10 bg-[#d4b18f] hover:bg-[#c49d76] text-white shadow-md">
           <AiFillEye size={18} />
-        </button>
+        </Link>
         <Link
           state={{ coffee: coffee }}
           to="/update-coffee"

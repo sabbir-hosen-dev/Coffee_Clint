@@ -4,6 +4,7 @@ import AddCoffe from "./../Pages/AddCoffe";
 import NotFound from "../Pages/NotFount";
 import Home from "../Pages/Home";
 import UpdateCoffee from "../Pages/UpdateCoffee";
+import Coffee from "../Components/Coffee";
 
 function RoutesApp() {
   return (
@@ -13,6 +14,7 @@ function RoutesApp() {
           <Route path="" element={<Home />} />
           <Route path="/add-coffee" element={<AddCoffe />} />
           <Route path="/update-coffee" element={<UpdateCoffee />} />
+          <Route path="/coffees/:id" element={<Coffee />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 

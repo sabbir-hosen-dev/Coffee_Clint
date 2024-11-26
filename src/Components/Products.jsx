@@ -1,5 +1,5 @@
 import { BsCup } from "react-icons/bs";
-import Coffee from "./CoffeeCard";
+import Coffee from "./CoffeesCard";
 
 import img from '../assets/images/more/1.png'
 import { Link } from "react-router-dom";
