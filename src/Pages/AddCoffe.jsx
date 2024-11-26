@@ -1,7 +1,48 @@
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useCoffeeContex from "../Hooks/useCoffeeContex";
 
 function AddCoffee() {
+  const { setUpdate,update} = useCoffeeContex()
+  const handleAdd = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const test = form.test.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const price = form.price.value;
+
+    const data = { name, chef, supplier, test, category, details, photo,price };
+
+    fetch("http://localhost:5000/coffees", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          Swal.fire({
+            title: "Thanks !",
+            text: "Add a new Coffee !",
+            icon: "success",
+          });
+          setUpdate(!update)
+
+          form.reset()
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className=" wrap py-10 bg-[#F4F3F]">
       <div className="">
@@ -24,7 +65,7 @@ function AddCoffee() {
             of using Lorem Ipsum is that it has a more-or-less normal
             distribution of letters, as opposed to using Content here.
           </p>
-          <form action="">
+          <form onSubmit={handleAdd} action="">
             <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="form-control">
                 <label className="label">
@@ -103,8 +144,19 @@ function AddCoffee() {
                   required
                 />
               </div>
+              <div className="form-control">
+              <label className="label">
+                <span className="label-text">Price</span>
+              </label>
+              <input
+                type="number"
+                name="price"
+                placeholder="Coffee Price"
+                className="input input-bordered"
+                required
+              />
             </div>
-
+            
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Photo</span>
@@ -117,8 +169,13 @@ function AddCoffee() {
                 required
               />
             </div>
+            </div>
 
-            <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">Add Coffe</button>
+
+
+            <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">
+              Add Coffe
+            </button>
           </form>
         </div>
       </div>

@@ -12,19 +12,19 @@ function Breand() {
       img: img1
     },
     {
-      id: 1,
+      id: 2,
       title : "High Quality",
       desc: "We served the coffee to you maintaining the best quality",
       img: img2
     },
     {
-      id: 1,
+      id: 3,
       title : "Pure Grades",
       desc: "The coffee is made of the green coffee beans which you will love",
       img:img3
     },
     {
-      id: 1,
+      id: 4,
       title : "Proper Roasting",
       desc: "Your coffee is brewed by first roasting the green coffee beans",
       img:img4

@@ -3,8 +3,10 @@ import Coffee from "./CoffeeCard";
 
 import img from '../assets/images/more/1.png'
 import { Link } from "react-router-dom";
+import useCoffeeContex from './../Hooks/useCoffeeContex';
 
 function Products() {
+  const {coffees} = useCoffeeContex();
   return (  
     <div className="my-32">
           <div className="relative">
@@ -24,7 +26,9 @@ function Products() {
       </div>
 
       <div className="wrap grid grid-cols-1 md:grid-cols-2 gap-5">
-        <Coffee />
+        {
+          coffees && coffees.map(coffee => <Coffee key={coffee._id} coffee={coffee} />)
+        }
       </div>
 
       <div className="absolute z-[-1] top-0">
