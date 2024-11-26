@@ -23,5 +23,10 @@ body{
 }
 
 .main-btn{
-  @apply bg-pin py-2 px-5 mt-5 text-main font-rancho rounded-sm  font-bold  hover:bg-transparent hover:text-white hover:border hover:border-white border border-pin
+  @apply bg-pin py-2 px-5 mt-5 text-main font-rancho rounded-sm  font-bold  hover:bg-transparent hover:text-white hover:border hover:border-white border border-pin transition-all duration-300
+}
+
+.main-btn:hover span{
+  color: #1B1A1A;
+  transition: .3s ease;
 }

@@ -17,7 +17,7 @@ function Follow() {
         <h4>Follow Us Now</h4>
         <h2 className="font-rancho text-4xl font-bold mt-2 mb-5">Follow on Instagram</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
         {items.map((item) => (
           <div key={item.id} className="rounded-md w-full">
             {" "}

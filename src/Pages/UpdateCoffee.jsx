@@ -1,7 +1,7 @@
 import { BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function AddCoffee() {
+function UpdateCoffee() {
   return (
     <div className=" wrap py-10 bg-[#F4F3F]">
       <div className="">
@@ -16,13 +16,10 @@ function AddCoffee() {
       <div className="flex py-10 justify-center items-center">
         <div className="bg-[#F4F3F0] p-10 rounded-xl shadow-lg w-full max-w-2xl">
           <h1 className="text-3xl font-rancho font-bold text-center mb-4">
-            Add New Coffee
+          Update Existing Coffee Details
           </h1>
           <p className="text-sm text-center text-gray-600 mb-6">
-            It is a long established fact that a reader will be distraceted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using Content here.
+          It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
           </p>
           <form action="">
             <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -118,7 +115,7 @@ function AddCoffee() {
               />
             </div>
 
-            <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">Add Coffe</button>
+            <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">Update Coffee Detalls</button>
           </form>
         </div>
       </div>
@@ -126,4 +123,4 @@ function AddCoffee() {
   );
 }
 
-export default AddCoffee;
+export default UpdateCoffee;
