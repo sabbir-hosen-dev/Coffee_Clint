@@ -16,3 +16,12 @@ body{
   font-family: "Raleway", sans-serif;
   color:#1B1A1A;
 }
+.banner{
+  background-repeat: no-repeat;
+  background-position: center center;
+  height:calc(100vh - 74px);
+}
+
+.main-btn{
+  @apply bg-pin py-2 px-5 mt-5 text-main font-rancho rounded-sm  font-bold  hover:bg-transparent hover:text-white hover:border hover:border-white border border-pin
+}
