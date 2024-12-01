@@ -10,12 +10,11 @@ function Coffee() {
   const [coffee, setCoffee] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/coffees/${id}`)
+    fetch(`https://coffee-server-tawny.vercel.app/coffees/${id}`)
       .then((res) => res.json())
       .then((data) => setCoffee(data))
       .catch((err) => console.log(err));
   }, []);
-
 
   return (
     <div className="wrap py-10">
@@ -34,27 +33,43 @@ function Coffee() {
               <img className="w-64" src={coffee?.photo} alt="" />
             </div>
             <div className="flex-1">
-
               <h4 className="font-rancho text-3xl font-bold mb-2">Nicetless</h4>
 
               <p className="text-lg font-semibold text-gray-800">
-                Name: <span className="font-normal text-gray-600">{coffee?.name}</span>
+                Name:{" "}
+                <span className="font-normal text-gray-600">
+                  {coffee?.name}
+                </span>
               </p>
               <p className="text-lg font-semibold text-gray-800">
-                Chef: <span className="font-normal text-gray-600">{coffee?.chef}</span>
+                Chef:{" "}
+                <span className="font-normal text-gray-600">
+                  {coffee?.chef}
+                </span>
               </p>
               <p className="text-lg font-semibold text-gray-800">
-                Supplier: <span className="font-normal text-gray-600">{coffee?.supplier}</span>
+                Supplier:{" "}
+                <span className="font-normal text-gray-600">
+                  {coffee?.supplier}
+                </span>
               </p>
               <p className="text-lg font-semibold text-gray-800">
-                Test: <span className="font-normal text-gray-600">{coffee?.test}</span>
+                Test:{" "}
+                <span className="font-normal text-gray-600">
+                  {coffee?.test}
+                </span>
               </p>
               <p className="text-lg font-semibold text-gray-800">
-                Category: <span className="font-normal text-gray-600">{coffee?.category}</span>
+                Category:{" "}
+                <span className="font-normal text-gray-600">
+                  {coffee?.category}
+                </span>
               </p>
               <p className="text-lg font-semibold text-gray-800">
                 Details:{" "}
-                <span className="font-normal text-gray-600">{coffee?.details}</span>
+                <span className="font-normal text-gray-600">
+                  {coffee?.details}
+                </span>
               </p>
             </div>
           </div>

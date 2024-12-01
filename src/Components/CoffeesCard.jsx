@@ -22,7 +22,9 @@ function CoffeeCard({ coffee }) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/coffee/${id}`, { method: "DELETE" })
+        fetch(`https://coffee-server-tawny.vercel.app/coffee/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {
@@ -64,7 +66,10 @@ function CoffeeCard({ coffee }) {
 
       {/* Button Section */}
       <div className="flex flex-col items-center gap-3">
-        <Link to={`/coffees/${_id}`} className="p-2 rounded-full z-10 bg-[#d4b18f] hover:bg-[#c49d76] text-white shadow-md">
+        <Link
+          to={`/coffees/${_id}`}
+          className="p-2 rounded-full z-10 bg-[#d4b18f] hover:bg-[#c49d76] text-white shadow-md"
+        >
           <AiFillEye size={18} />
         </Link>
         <Link

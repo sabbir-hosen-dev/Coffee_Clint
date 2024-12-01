@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useCoffeeContex from "../Hooks/useCoffeeContex";
 
 function AddCoffee() {
-  const { setUpdate,update} = useCoffeeContex()
+  const { setUpdate, update } = useCoffeeContex();
   const handleAdd = (e) => {
     e.preventDefault();
 
@@ -19,9 +19,18 @@ function AddCoffee() {
     const photo = form.photo.value;
     const price = form.price.value;
 
-    const data = { name, chef, supplier, test, category, details, photo,price };
+    const data = {
+      name,
+      chef,
+      supplier,
+      test,
+      category,
+      details,
+      photo,
+      price,
+    };
 
-    fetch("http://localhost:5000/coffees", {
+    fetch("https://coffee-server-tawny.vercel.app/coffees", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,9 +45,9 @@ function AddCoffee() {
             text: "Add a new Coffee !",
             icon: "success",
           });
-          setUpdate(!update)
+          setUpdate(!update);
 
-          form.reset()
+          form.reset();
         }
       })
       .catch((err) => console.log(err));
@@ -145,33 +154,31 @@ function AddCoffee() {
                 />
               </div>
               <div className="form-control">
-              <label className="label">
-                <span className="label-text">Price</span>
-              </label>
-              <input
-                type="number"
-                name="price"
-                placeholder="Coffee Price"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                placeholder="Enter Photo Url"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            </div>
+                <label className="label">
+                  <span className="label-text">Price</span>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  placeholder="Coffee Price"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
 
-
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="Enter Photo Url"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+            </div>
 
             <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">
               Add Coffe

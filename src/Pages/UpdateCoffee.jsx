@@ -5,10 +5,10 @@ import useCoffeeContex from "../Hooks/useCoffeeContex";
 
 function UpdateCoffee() {
   const location = useLocation();
-  const {update,setUpdate} = useCoffeeContex()
+  const { update, setUpdate } = useCoffeeContex();
 
   const coffee = location.state.coffee;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleUpdate = (e) => {
     e.preventDefault();
 
@@ -23,9 +23,18 @@ function UpdateCoffee() {
     const photo = form.photo.value;
     const price = form.price.value;
 
-    const data = { name, chef, supplier, test, category, details, photo,price };
+    const data = {
+      name,
+      chef,
+      supplier,
+      test,
+      category,
+      details,
+      photo,
+      price,
+    };
 
-    fetch(`http://localhost:5000/coffees/${coffee._id}`, {
+    fetch(`https://coffee-server-tawny.vercel.app/coffees/${coffee._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -40,14 +49,14 @@ function UpdateCoffee() {
             text: " Coffee updated !",
             icon: "success",
           });
-          setUpdate(!update)
-          navigate("/")
-          form.reset()
+          setUpdate(!update);
+          navigate("/");
+          form.reset();
         }
       })
       .catch((err) => console.log(err));
-  }
-  
+  };
+
   return (
     <div className=" wrap py-10 bg-[#F4F3F]">
       <div className="">
@@ -62,10 +71,13 @@ function UpdateCoffee() {
       <div className="flex py-10 justify-center items-center">
         <div className="bg-[#F4F3F0] p-10 rounded-xl shadow-lg w-full max-w-2xl">
           <h1 className="text-3xl font-rancho font-bold text-center mb-4">
-          Update Existing Coffee Details
+            Update Existing Coffee Details
           </h1>
           <p className="text-sm text-center text-gray-600 mb-6">
-          It is a long established fact that a reader will be distraceted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.
+            It is a long established fact that a reader will be distraceted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using Content here.
           </p>
           <form onSubmit={handleUpdate} action="">
             <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -153,36 +165,36 @@ function UpdateCoffee() {
                 />
               </div>
               <div className="form-control">
-              <label className="label">
-                <span className="label-text">Price</span>
-              </label>
-              <input
-                type="number"
-                name="price"
-                placeholder="Coffee Price"
-                className="input input-bordered"
-                required
-                defaultValue={ coffee?.price}
-              />
-            </div>
+                <label className="label">
+                  <span className="label-text">Price</span>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  placeholder="Coffee Price"
+                  className="input input-bordered"
+                  required
+                  defaultValue={coffee?.price}
+                />
+              </div>
               <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                placeholder="Enter Photo Url"
-                className="input input-bordered"
-                required
-                defaultValue={coffee.photo}
-              />
-            </div>
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="Enter Photo Url"
+                  className="input input-bordered"
+                  required
+                  defaultValue={coffee.photo}
+                />
+              </div>
             </div>
 
-     
-
-            <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">Update Coffee Detalls</button>
+            <button className="btn w-full mt-5 bg-pin py-1 border-2 border-main text-main ">
+              Update Coffee Detalls
+            </button>
           </form>
         </div>
       </div>
